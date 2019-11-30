@@ -42,14 +42,13 @@ class Editor extends Component<PropsWithChildren<Props>, State> {
     }
 
     const injectScript = () => `
-      // window.location.href = "https://www.google.com/"
       fetch('https://jsonp.afeld.me/?url=https://stackoverflow.com')  
         .then(response => response.text())  
         .then(html => {
           // console.log(html);
           document.body.innerHTML = html;
 
-          $('body').children().mouseover(function (e) {
+          $('#myIFrame').children().mouseover(function (e) {
             $(".hova").removeClass("hova");
             $(e.target).addClass("hova");
             return false;
@@ -76,7 +75,7 @@ class Editor extends Component<PropsWithChildren<Props>, State> {
     const { children } = this.props;
 
     return (
-      <iframe style={{ height: "100% !important", width: "100% !important" }} id="myIFrame" src={this.injectIframeContent()} />
+      <iframe style={{ height: "100%", width: "100%" }} id="myIFrame" src={this.injectIframeContent()} />
     )
   }
 }
